@@ -19,20 +19,25 @@ bcrypt.hash(myPlaintextPassword, saltRounds, (err, hash) => {
   console.log(saltRounds)
   console.log(hash)
   
-    bcrypt.compare(someOtherPlaintextPassword, hash, (err, res) => {
+  //output 'ture' AS myPlaintextPassword in bcrypt.hash() equals to myPlaintextPassword in bcrypt.compare()
+    bcrypt.compare(myPlaintextPassword, hash, (err, res) => {
     /*res == true or false*/
     console.log( res)
   });
   
+   //output 'false' AS myPlaintextPassword in bcrypt.hash() equals to myPlaintextPassword in bcrypt.compare()
+  //  bcrypt.compare(someOtherPlaintextPassword, hash, (err, res) => {
+  //   /*res == true or false*/
+  //   console.log( res)
+  // });
+  
 });
-
-
-
 
 //END_ASYNC
 
-//START_SYNC
 
+//START_SYNC
+var hash = bcrypt.hashSync(myPlaintextPassword, saltRounds);
 
 
 //END_SYNC
